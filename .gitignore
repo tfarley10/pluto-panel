@@ -1,0 +1,12 @@
+*.csv
+*.txt
+*.pdf
+*.json
+*checkpoints
+*.htm
+*.html
+secrets
+raw_metadata
+.virtual_documents
+metadata_text
+.DS_Store
