@@ -1,6 +1,13 @@
 # Data Modelling
 
 1. make bbl column for all tables
+    - map borough -> borough_code	
+        -  MN -> 1
+        -  BX -> 2
+        -  BK -> 3
+        -  QN -> 4
+        -  SI -> 5
+
 1. make bbl-year unique key for all years
 1. union columns that exist in all tables
 
