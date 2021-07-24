@@ -1,4 +1,7 @@
-Welcome to your new dbt project!
+Data Modelling!
+
+1. Setup [odbc connection from bq -> r](https://db.rstudio.com/databases/big-query/)
+1. Make a table that has metadata & definitions for pluto fields for all years
 
 ### Using the starter project
 
