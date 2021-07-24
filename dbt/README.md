@@ -1,6 +1,14 @@
+# Concepts
+    - (ref)[https://docs.getdbt.com/reference/dbt-jinja-functions/ref]
+        - how to reference a model within a model
+    - (source)[https://docs.getdbt.com/docs/building-a-dbt-project/using-sources]
+        - schema definition defined in yaml file in models directory
+        - videos on (sources)[https://courses.getdbt.com/courses/take/fundamentals/lessons/17704147-reorganize-your-project]
+
 # Data Modelling
 
 1. make bbl column for all tables
+    - use (dbt_utils.getcolumn_values())[https://github.com/dbt-labs/dbt-utils/tree/0.7.0/#get_column_values-source] to validate that borough is consistent across all years
     - map borough -> borough_code	
         -  MN -> 1
         -  BX -> 2
@@ -17,3 +25,5 @@
 
 ### Resources:
 -  dbt [in the docs](https://docs.getdbt.com/docs/introduction)
+- [UNION ALL](https://discourse.getdbt.com/t/unioning-identically-structured-data-sources/921)
+- [dbt hub](https://hub.getdbt.com/dbt-labs/dbt_utils/latest/)
