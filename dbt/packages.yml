@@ -1,3 +1,5 @@
 packages:
   - package: dbt-labs/dbt_utils
     version: 0.6.6
+  - package: emilyriederer/dbtplyr
+    version: 0.1.0
