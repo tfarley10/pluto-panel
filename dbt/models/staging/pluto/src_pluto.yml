@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: pluto
+    database: pluto-panel
+    tables:
+      - name: pluto_2002 
+      - name: pluto_2003 
+      - name: pluto_2004
+      - name: pluto_2005
+      - name: pluto_2006
+      - name: pluto_2007
+      - name: pluto_2008
+      - name: pluto_2009
+      - name: pluto_2010
+      - name: pluto_2011
+      - name: pluto_2012
+      - name: pluto_2013
+      - name: pluto_2014
+      - name: pluto_2015
+      - name: pluto_2016
+      - name: pluto_2017
+      - name: pluto_2018
+      - name: pluto_2019
+      - name: pluto_2020
