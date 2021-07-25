@@ -20,7 +20,7 @@ select
     {{across(dbtplyr.one_of(built_far_col, source('pluto', tb )), "{{var}}")}} as built_far,
     {{across(dbtplyr.starts_with('landuse', source('pluto', tb )), "{{var}}")}} as land_use_category,
     zonedist1 as primary_zoning_district,
-    ownertype as owner_type,
+    nullif(lower(trim(ownertype), '')) as owner_type,
     ownername as owner_name,
     resarea as residentail_floor_area,
     comarea as commercial_floor_area,
