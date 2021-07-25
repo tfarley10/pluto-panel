@@ -34,4 +34,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
     pluto:
         staging:
-            materialized: view
+            metadata:
+                materialized: view

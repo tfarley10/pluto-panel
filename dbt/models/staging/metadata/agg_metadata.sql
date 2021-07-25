@@ -23,4 +23,4 @@ from union_metadata
 where 
     CHAR_LENGTH(field_name) <= 150
 )
-select * from split_field
+select * from split_field where true 
