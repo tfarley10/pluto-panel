@@ -9,18 +9,15 @@
 
 1. make bbl column for all tables
     - use [dbt_utils.getcolumn_values](https://github.com/dbt-labs/dbt-utils/tree/0.7.0/#get_column_values-source) to validate that borough is consistent across all years
-    - map borough -> borough_code	
-        -  MN -> 1
-        -  BX -> 2
-        -  BK -> 3
-        -  QN -> 4
-        -  SI -> 5
+    - map borough -> borough_code
+    - add build FAR
 
 1. make bbl-year unique key for all years
 1. union columns that exist in all tables
 
 1. Setup [odbc connection from bq -> r](https://bigrquery.r-dbi.org/)
 1. Make a table that has metadata & definitions for pluto fields for all years
+1. pluto-mapping [gsheet](https://docs.google.com/spreadsheets/d/1_9sEzZpoc7u1BDc6kbxC2Vna08gg8Fni_Ip5CBcupKk/edit#gid=0)
 
 
 ### Resources:
