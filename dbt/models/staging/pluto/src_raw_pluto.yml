@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: pluto
+  - name: raw_pluto
     database: pluto-panel
     tables:
       - name: pluto_2002 

@@ -1,3 +1,5 @@
+
+# https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet
 from google.cloud import storage
 from google.cloud import bigquery
 import etc.secret

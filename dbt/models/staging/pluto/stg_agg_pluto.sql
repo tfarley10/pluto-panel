@@ -16,9 +16,9 @@ select
     end as borough_code,
     lpad(cast(block as string), 5, '0') as block,
     lpad(cast(lot as string), 4, '0') as lot,
-    {{across(dbtplyr.one_of(max_far_col, source('pluto', tb )), "{{var}}")}} as max_resid_allw_far,
-    {{across(dbtplyr.one_of(built_far_col, source('pluto', tb )), "{{var}}")}} as built_far,
-    {{across(dbtplyr.starts_with('landuse', source('pluto', tb )), "{{var}}")}} as land_use_category,
+    {{across(dbtplyr.one_of(max_far_col, source('raw_pluto', tb )), "{{var}}")}} as max_resid_allw_far,
+    {{across(dbtplyr.one_of(built_far_col, source('raw_pluto', tb )), "{{var}}")}} as built_far,
+    {{across(dbtplyr.starts_with('landuse', source('raw_pluto', tb )), "{{var}}")}} as land_use_category,
     zonedist1 as primary_zoning_district,
     nullif(lower(trim(ownertype)), '') as owner_type,
     ownername as owner_name,
@@ -32,7 +32,7 @@ select
     yearbuilt as year_built,
     address as lot_address,
     cast(histdist as string) as historic_district,
-    safe.st_geogfromtext(wkt_geom) as geom
-from {{source('pluto', tb )}}
+    safe.st_geogfromwkb(geometry) as geom
+from {{source('raw_pluto', tb )}}
 {% if not loop.last -%} union all {%- endif %}
 {% endfor %}

@@ -3,7 +3,7 @@
 {% set pluto_tables_query %}
 select distinct
 table_name
-from `pluto-panel.pluto.INFORMATION_SCHEMA.TABLES`
+from `pluto-panel.raw_pluto.INFORMATION_SCHEMA.TABLES`
 order by 1
 {% endset %}
 

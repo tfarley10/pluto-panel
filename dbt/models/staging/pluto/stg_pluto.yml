@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_transform_pluto
+    columns:
+      - name: pluto_year_id
+        tests:
+          - unique
+          - not_null
+      - name: land_use_category
+        tests:
+          - accepted_values:
+              values: [1,2,3,4,5,6,7,8,9,10,11]
+
+
