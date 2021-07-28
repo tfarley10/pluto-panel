@@ -1,4 +1,3 @@
-
 # https://cloud.google.com/bigquery/docs/loading-data-cloud-storage-parquet
 from google.cloud import storage
 from google.cloud import bigquery
@@ -9,21 +8,18 @@ storage_client = storage.Client()
 bq_client = bigquery.Client()
 
 
-pluto_bucket = 'raw-pluto'
+pluto_bucket = 'pluto-parquet'
 blobs = storage_client.list_blobs(pluto_bucket)
 pluto_blob = [blob.name for blob in blobs]
 
-
-table_id = ['pluto-panel.raw.pluto_' + x.strip('.csv') for x in pluto_blob]
-uri = ['gs://raw-pluto/'+ x for x in pluto_blob]
+table_id = ['pluto-panel.raw_pluto.' + x.replace('.parquet', '') for x in pluto_blob]
+uri = ['gs://pluto-parquet/'+ x for x in pluto_blob]
 storage_bq_map = dict(zip(uri, table_id))
-
 
 def load_from_uri(uri, table_id):
     job_config = bigquery.LoadJobConfig(
         autodetect=True,
-        skip_leading_rows=1,
-        source_format=bigquery.SourceFormat.CSV)
+        source_format=bigquery.SourceFormat.PARQUET)
 
     try:
         bq_client.get_table(table_id)
