@@ -1,7 +1,7 @@
 import pandas as pd
 from utils import list_all_files
 from google.cloud import storage
-import etc.secret
+# import etc.secret
 from zips import unzip_to_temp
 from pluto_year import PlutoYear
 from shutil import rmtree
