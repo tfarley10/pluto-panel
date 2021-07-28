@@ -34,5 +34,8 @@
    `http://127.0.0.1:9999/lab?token=<token>`
    
 [Aly Sivji's tutorial on youtube is very helpful](https://www.youtube.com/watch?v=oO8n3y23b6M)
+
+
+`docker run -p 9999:8888 -v $(pwd):/app tfarley10/jupyter`
    
     
