@@ -51,7 +51,7 @@ def transform_gdf(gdf: gpd.GeoDataFrame):
 
     print("transforming dataframe")
     transformed = gdf.copy(deep=False)
-    transformed = transformed.to_crs({'init': "ESPG: 4326"})
+    transformed = transformed.to_crs(epsg = 4326)
     transformed['geometry'] = transformed["geometry"].fillna()
     transformed = transformed.clean_names()
 
@@ -63,11 +63,14 @@ def read_transform(path: str, chunk: slice):
     return transform_gdf(chunk_gdf)
 
 
-def agg_from_path(path):
-    chunks = make_chunks(path)
-    read_t = partial(read_transform, path=path)
+def agg_from_path(pth):
+    chunks = make_chunks(path=pth)
+#     read_t = partial(read_transform, path=pth)
+    g_list=[]
+    for c in chunks:
+        g_list.append(read_transform(pth, c))
 
-    return pd.concat(list(map(read_t, chunks)))
+    return 
 
 
 
