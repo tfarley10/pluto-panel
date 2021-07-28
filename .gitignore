@@ -5,6 +5,8 @@
 *checkpoints
 *.htm
 *.html
+*.pyc
+sectret.json
 secrets
 raw_metadata
 .virtual_documents
