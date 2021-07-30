@@ -4,6 +4,12 @@ from zipfile import ZipFile
 from tempfile import mkdtemp
 from utils import list_all_files
 import os
+import logging
+from logging.config import fileConfig
+
+loginipath='logs/logging_config.ini'
+fileConfig(loginipath, defaults={'logfilename': 'logs/pluto.log'})
+logger = logging.getLogger('sLogger')
 
 
 
@@ -47,7 +53,8 @@ def unzip_to_temp(zipurl, extract = True):
     dir = mkdtemp()
 
     with urlopen(zipurl) as zipresp:
-        print(f"Downloading ZIPFile {zipurl}")
+        msg=f"Downloading ZIPFile {zipurl}"
+        logger.info(msg)
         with ZipFile(BytesIO(zipresp.read())) as zfile:
             if not extract:
                 files = zfile.namelist()
