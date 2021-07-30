@@ -8,8 +8,8 @@ import os
 import logging
 from logging.config import fileConfig
 
-loginipath='logging_config.ini'
-fileConfig(loginipath, defaults={'logfilename': 'mylog.log'})
+loginipath='logs/logging_config.ini'
+fileConfig(loginipath, defaults={'logfilename': 'logs/pluto.log'})
 logger = logging.getLogger('sLogger')
 
 def list_shp(dir:str):
@@ -62,7 +62,7 @@ def file_name(path):
     return path.rsplit('/',1)[1]
 
 
-def read_chunk(path, chunk:slice):
+def read_chunk(path, chunk:slice, year):
 
     """
 
@@ -70,7 +70,7 @@ def read_chunk(path, chunk:slice):
     :return: geodataframe
     """
     name = file_name(path)
-    msg=f'reading from {chunk.start} to {chunk.stop} rows from {name}'
+    msg=f'reading from {chunk.start} to {chunk.stop} rows from {name} for year {year}'
     logger.info(msg)
     return gpd.read_file(path, rows=chunk)
 
@@ -87,16 +87,16 @@ def transform_gdf(gdf: gpd.GeoDataFrame):
     return transformed
 
 
-def read_transform(path: str, chunk: slice):
-    chunk_gdf = read_chunk(path, chunk)
+def read_transform(path: str, chunk: slice, year):
+    chunk_gdf = read_chunk(path, chunk, year)
     return transform_gdf(chunk_gdf)
 
 
-def agg_from_path(pth):
+def agg_from_path(pth, year="1984"):
     chunks = make_chunks(path=pth)
     g_list=[]
     for c in chunks:
-        g_list.append(read_transform(pth, c))
+        g_list.append(read_transform(pth, c, year=year))
 
     return pd.concat(g_list)
 
