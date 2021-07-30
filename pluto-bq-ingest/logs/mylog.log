@@ -1,0 +1,41 @@
+2021-07-28 20:42:12,678 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp
+2021-07-28 20:42:27,807 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp
+2021-07-28 20:42:46,042 - sLogger - INFO - reading from 100000 to 150000 rows from qnmappluto.shp
+2021-07-28 20:44:24,452 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp
+2021-07-28 20:44:33,410 - sLogger - INFO - transforming dataframe
+2021-07-28 20:44:40,393 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp
+2021-07-28 20:44:49,219 - sLogger - INFO - transforming dataframe
+2021-07-28 20:44:56,422 - sLogger - INFO - reading from 100000 to 150000 rows from qnmappluto.shp
+2021-07-28 20:45:09,571 - sLogger - INFO - transforming dataframe
+2021-07-28 20:45:17,884 - sLogger - INFO - reading from 150000 to 200000 rows from qnmappluto.shp
+2021-07-28 20:45:32,492 - sLogger - INFO - transforming dataframe
+2021-07-28 20:45:42,569 - sLogger - INFO - reading from 200000 to 250000 rows from qnmappluto.shp
+2021-07-28 20:45:54,070 - sLogger - INFO - transforming dataframe
+2021-07-28 20:46:03,668 - sLogger - INFO - reading from 250000 to 300000 rows from qnmappluto.shp
+2021-07-28 20:46:12,089 - sLogger - INFO - transforming dataframe
+2021-07-28 20:46:18,958 - sLogger - INFO - reading from 300000 to 350000 rows from qnmappluto.shp
+2021-07-28 20:46:22,424 - sLogger - INFO - transforming dataframe
+2021-07-28 20:46:26,738 - sLogger - INFO - reading from 0 to 50000 rows from bkmappluto.shp
+2021-07-28 20:46:36,379 - sLogger - INFO - transforming dataframe
+2021-07-28 20:46:43,729 - sLogger - INFO - reading from 50000 to 100000 rows from bkmappluto.shp
+2021-07-28 20:46:53,992 - sLogger - INFO - transforming dataframe
+2021-07-28 20:47:04,268 - sLogger - INFO - reading from 100000 to 150000 rows from bkmappluto.shp
+2021-07-28 20:47:13,953 - sLogger - INFO - transforming dataframe
+2021-07-28 20:47:22,394 - sLogger - INFO - reading from 150000 to 200000 rows from bkmappluto.shp
+2021-07-28 20:47:32,188 - sLogger - INFO - transforming dataframe
+2021-07-28 20:47:39,380 - sLogger - INFO - reading from 200000 to 250000 rows from bkmappluto.shp
+2021-07-28 20:47:47,878 - sLogger - INFO - transforming dataframe
+2021-07-28 20:47:54,777 - sLogger - INFO - reading from 250000 to 300000 rows from bkmappluto.shp
+2021-07-28 20:47:59,155 - sLogger - INFO - transforming dataframe
+2021-07-28 20:48:03,821 - sLogger - INFO - reading from 0 to 50000 rows from bxmappluto.shp
+2021-07-28 20:48:15,185 - sLogger - INFO - transforming dataframe
+2021-07-28 20:48:21,255 - sLogger - INFO - reading from 50000 to 100000 rows from bxmappluto.shp
+2021-07-28 20:48:27,877 - sLogger - INFO - transforming dataframe
+2021-07-28 20:48:32,758 - sLogger - INFO - reading from 0 to 50000 rows from mnmappluto.shp
+2021-07-28 20:48:41,126 - sLogger - INFO - transforming dataframe
+2021-07-28 20:48:46,569 - sLogger - INFO - reading from 0 to 50000 rows from simappluto.shp
+2021-07-28 20:48:55,421 - sLogger - INFO - transforming dataframe
+2021-07-28 20:49:04,824 - sLogger - INFO - reading from 50000 to 100000 rows from simappluto.shp
+2021-07-28 20:49:14,540 - sLogger - INFO - transforming dataframe
+2021-07-28 20:49:25,929 - sLogger - INFO - reading from 100000 to 150000 rows from simappluto.shp
+2021-07-28 20:49:30,771 - sLogger - INFO - transforming dataframe

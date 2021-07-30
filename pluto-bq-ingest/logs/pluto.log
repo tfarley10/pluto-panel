@@ -1,0 +1,101 @@
+2021-07-28 20:57:10,738 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp
+2021-07-28 20:57:22,379 - sLogger - INFO - transforming dataframe
+2021-07-28 20:57:30,467 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp
+2021-07-28 20:57:41,981 - sLogger - INFO - transforming dataframe
+2021-07-28 20:57:48,362 - sLogger - INFO - reading from 100000 to 150000 rows from qnmappluto.shp
+2021-07-28 20:58:06,335 - sLogger - INFO - transforming dataframe
+2021-07-28 20:58:19,514 - sLogger - INFO - reading from 150000 to 200000 rows from qnmappluto.shp
+2021-07-28 20:58:35,761 - sLogger - INFO - transforming dataframe
+2021-07-28 20:58:42,050 - sLogger - INFO - reading from 200000 to 250000 rows from qnmappluto.shp
+2021-07-28 20:58:50,563 - sLogger - INFO - transforming dataframe
+2021-07-28 20:58:56,697 - sLogger - INFO - reading from 250000 to 300000 rows from qnmappluto.shp
+2021-07-28 20:59:06,093 - sLogger - INFO - transforming dataframe
+2021-07-28 20:59:12,343 - sLogger - INFO - reading from 300000 to 350000 rows from qnmappluto.shp
+2021-07-28 20:59:15,541 - sLogger - INFO - transforming dataframe
+2021-07-28 20:59:19,342 - sLogger - INFO - reading from 0 to 50000 rows from bkmappluto.shp
+2021-07-28 20:59:27,529 - sLogger - INFO - transforming dataframe
+2021-07-28 20:59:33,561 - sLogger - INFO - reading from 50000 to 100000 rows from bkmappluto.shp
+2021-07-28 20:59:41,576 - sLogger - INFO - transforming dataframe
+2021-07-28 20:59:47,630 - sLogger - INFO - reading from 100000 to 150000 rows from bkmappluto.shp
+2021-07-28 20:59:56,527 - sLogger - INFO - transforming dataframe
+2021-07-28 21:00:03,630 - sLogger - INFO - reading from 150000 to 200000 rows from bkmappluto.shp
+2021-07-28 21:00:14,173 - sLogger - INFO - transforming dataframe
+2021-07-28 21:00:22,176 - sLogger - INFO - reading from 200000 to 250000 rows from bkmappluto.shp
+2021-07-28 21:00:31,480 - sLogger - INFO - transforming dataframe
+2021-07-28 21:00:38,523 - sLogger - INFO - reading from 250000 to 300000 rows from bkmappluto.shp
+2021-07-28 21:00:42,999 - sLogger - INFO - transforming dataframe
+2021-07-28 21:00:48,269 - sLogger - INFO - reading from 0 to 50000 rows from bxmappluto.shp
+2021-07-28 21:00:56,929 - sLogger - INFO - transforming dataframe
+2021-07-28 21:01:04,281 - sLogger - INFO - reading from 50000 to 100000 rows from bxmappluto.shp
+2021-07-28 21:01:10,896 - sLogger - INFO - transforming dataframe
+2021-07-28 21:01:15,713 - sLogger - INFO - reading from 0 to 50000 rows from mnmappluto.shp
+2021-07-28 21:01:23,644 - sLogger - INFO - transforming dataframe
+2021-07-28 21:01:30,181 - sLogger - INFO - reading from 0 to 50000 rows from simappluto.shp
+2021-07-28 21:01:40,991 - sLogger - INFO - transforming dataframe
+2021-07-28 21:01:48,955 - sLogger - INFO - reading from 50000 to 100000 rows from simappluto.shp
+2021-07-28 21:01:58,932 - sLogger - INFO - transforming dataframe
+2021-07-28 21:02:08,203 - sLogger - INFO - reading from 100000 to 150000 rows from simappluto.shp
+2021-07-28 21:02:11,392 - sLogger - INFO - transforming dataframe
+2021-07-28 22:41:11,007 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp
+2021-07-28 22:41:33,998 - sLogger - INFO - transforming dataframe
+2021-07-28 22:41:39,320 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp
+2021-07-28 22:43:42,089 - sLogger - INFO - Downloading ZIPFile https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/mappluto_02b.zip
+2021-07-28 22:45:13,664 - sLogger - INFO - Downloading ZIPFile https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/mappluto_02b.zip
+2021-07-28 22:45:26,254 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp for year 1984
+2021-07-28 22:45:36,990 - sLogger - INFO - transforming dataframe
+2021-07-28 22:45:43,807 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp for year 1984
+2021-07-28 22:45:50,173 - sLogger - INFO - transforming dataframe
+2021-07-28 22:45:55,326 - sLogger - INFO - reading from 100000 to 150000 rows from qnmappluto.shp for year 1984
+2021-07-28 22:46:03,154 - sLogger - INFO - transforming dataframe
+2021-07-28 22:46:10,392 - sLogger - INFO - reading from 150000 to 200000 rows from qnmappluto.shp for year 1984
+2021-07-28 22:46:18,654 - sLogger - INFO - transforming dataframe
+2021-07-28 22:48:42,486 - sLogger - INFO - Downloading ZIPFile https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/mappluto_02b.zip
+2021-07-28 22:48:59,663 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp for year 2002
+2021-07-28 22:49:08,923 - sLogger - INFO - transforming dataframe
+2021-07-28 22:49:14,232 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp for year 2002
+2021-07-28 22:49:21,889 - sLogger - INFO - transforming dataframe
+2021-07-28 22:49:28,141 - sLogger - INFO - reading from 100000 to 150000 rows from qnmappluto.shp for year 2002
+2021-07-28 22:49:35,058 - sLogger - INFO - transforming dataframe
+2021-07-28 22:49:41,840 - sLogger - INFO - reading from 150000 to 200000 rows from qnmappluto.shp for year 2002
+2021-07-28 22:49:51,997 - sLogger - INFO - transforming dataframe
+2021-07-28 22:49:59,420 - sLogger - INFO - reading from 200000 to 250000 rows from qnmappluto.shp for year 2002
+2021-07-28 22:50:08,549 - sLogger - INFO - transforming dataframe
+2021-07-29 00:56:15,312 - sLogger - INFO - Downloading ZIPFile https://www1.nyc.gov/assets/planning/download/zip/data-maps/open-data/mappluto_02b.zip
+2021-07-29 00:56:29,689 - sLogger - INFO - reading from 0 to 50000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:56:39,520 - sLogger - INFO - transforming dataframe
+2021-07-29 00:56:46,249 - sLogger - INFO - reading from 50000 to 100000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:56:53,044 - sLogger - INFO - transforming dataframe
+2021-07-29 00:56:59,300 - sLogger - INFO - reading from 100000 to 150000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:57:05,976 - sLogger - INFO - transforming dataframe
+2021-07-29 00:57:10,856 - sLogger - INFO - reading from 150000 to 200000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:57:17,592 - sLogger - INFO - transforming dataframe
+2021-07-29 00:57:22,728 - sLogger - INFO - reading from 200000 to 250000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:57:29,423 - sLogger - INFO - transforming dataframe
+2021-07-29 00:57:34,125 - sLogger - INFO - reading from 250000 to 300000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:57:40,811 - sLogger - INFO - transforming dataframe
+2021-07-29 00:57:46,209 - sLogger - INFO - reading from 300000 to 350000 rows from qnmappluto.shp for year 2002
+2021-07-29 00:57:49,023 - sLogger - INFO - transforming dataframe
+2021-07-29 00:57:54,022 - sLogger - INFO - reading from 0 to 50000 rows from bkmappluto.shp for year 2002
+2021-07-29 00:58:01,017 - sLogger - INFO - transforming dataframe
+2021-07-29 00:58:05,943 - sLogger - INFO - reading from 50000 to 100000 rows from bkmappluto.shp for year 2002
+2021-07-29 00:58:14,130 - sLogger - INFO - transforming dataframe
+2021-07-29 00:58:19,332 - sLogger - INFO - reading from 100000 to 150000 rows from bkmappluto.shp for year 2002
+2021-07-29 00:58:26,553 - sLogger - INFO - transforming dataframe
+2021-07-29 00:58:32,163 - sLogger - INFO - reading from 150000 to 200000 rows from bkmappluto.shp for year 2002
+2021-07-29 00:58:41,190 - sLogger - INFO - transforming dataframe
+2021-07-29 00:58:47,309 - sLogger - INFO - reading from 200000 to 250000 rows from bkmappluto.shp for year 2002
+2021-07-29 00:59:00,399 - sLogger - INFO - transforming dataframe
+2021-07-29 00:59:07,005 - sLogger - INFO - reading from 250000 to 300000 rows from bkmappluto.shp for year 2002
+2021-07-29 00:59:11,527 - sLogger - INFO - transforming dataframe
+2021-07-29 00:59:15,550 - sLogger - INFO - reading from 0 to 50000 rows from bxmappluto.shp for year 2002
+2021-07-29 00:59:23,868 - sLogger - INFO - transforming dataframe
+2021-07-29 00:59:30,571 - sLogger - INFO - reading from 50000 to 100000 rows from bxmappluto.shp for year 2002
+2021-07-29 00:59:38,650 - sLogger - INFO - transforming dataframe
+2021-07-29 00:59:42,977 - sLogger - INFO - reading from 0 to 50000 rows from mnmappluto.shp for year 2002
+2021-07-29 00:59:51,173 - sLogger - INFO - transforming dataframe
+2021-07-29 00:59:56,956 - sLogger - INFO - reading from 0 to 50000 rows from simappluto.shp for year 2002
+2021-07-29 01:00:06,894 - sLogger - INFO - transforming dataframe
+2021-07-29 01:00:14,619 - sLogger - INFO - reading from 50000 to 100000 rows from simappluto.shp for year 2002
+2021-07-29 01:00:22,703 - sLogger - INFO - transforming dataframe
+2021-07-29 01:00:34,486 - sLogger - INFO - reading from 100000 to 150000 rows from simappluto.shp for year 2002
+2021-07-29 01:00:38,337 - sLogger - INFO - transforming dataframe
