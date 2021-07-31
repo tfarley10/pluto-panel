@@ -8,7 +8,8 @@ import logging
 from logging.config import fileConfig
 
 loginipath='logs/logging_config.ini'
-fileConfig(loginipath, defaults={'logfilename': 'logs/pluto.log'})
+log_file='extract_load.log'
+log_path=os.path.join('logs', log_file)
 logger = logging.getLogger('sLogger')
 
 
@@ -39,7 +40,6 @@ def unzip_child(zip_list, extract = True):
             if not extract:
                 return(zfile.namelist())
             else:
-                print("Unzipping children")
                 zfile.extractall(dir)
 
 def unzip_to_temp(zipurl, extract = True):
@@ -66,7 +66,10 @@ def unzip_to_temp(zipurl, extract = True):
 
     # does the shapefile contain more zipfiles?
     child_zips = list_all_files(dir, ['zip'])
-    if len(child_zips) >0:
+    len_child=len(child_zips)
+    if len_child > 0:
+        msg2=f'{zipurl} has {len_child} nested zipfiles, unzipping'
+        logger.info(msg2)
         unzip_child(child_zips)
 
     return(dir)
