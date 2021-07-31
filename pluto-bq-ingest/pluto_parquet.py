@@ -15,99 +15,79 @@ log_path=os.path.join('logs', log_file)
 logger = logging.getLogger('sLogger')
 
 
-def clipped(path: str):
+def is_valid_pluto(path: str) -> bool:
+    """
+    only include 'clipped' shapefiles, and mappluto files
+    """
     lower_path=path.lower()
     return ('unclipped' not in lower_path) and ('mappluto' in lower_path)
 
 
-def list_shp(dir:str):
+def list_shp(dir:str) -> list:
 
     """
 
-    :param dir: directory to walk
-    :param filetypes: list of filetypes that should be returned (eg. [pdf,htm])
-    :return: list of paths to files specified by filetypes
     """
     paths=[]
     get_ext = lambda x: x.rsplit('.', 1)[1].lower()
-    for root, dirs, files in os.walk(dir):
+    for root, _, files in os.walk(dir):
         for file in files:
-            if get_ext(file) == 'shp' and clipped(file):
+            if get_ext(file) == 'shp' and is_valid_pluto(file):
                 paths.append(os.path.join(root, file))
     return (paths)
 
 
-
-def filter_clipped(path_list: list):
-    return list(filter(clipped, path_list))
-
-
-def nrows(path):
-    return len(fiona.open(path))
-
-
-def make_chunks(path, size=5 * 10 ** 4):
+def make_chunks(path:str, size=5 * 10 ** 4):
 
     """
     :param gf_rows: number of rows in spatial data file
     :param size: # of rows to read in each slice
     :return: list of slices that will `chunk` the file read
     """
-    df_rows = nrows(path)
+    df_rows = len(fiona.open((path)))
     starts = list(range(0, df_rows, size))
     ends = list(range(size, df_rows + size, size))
     slices = [slice(start, end, 1) for start, end in zip(starts, ends)]
     return slices
 
 
-def file_name(path):
-    return path.rsplit('/',1)[1]
-
-
-def read_chunk(path, chunk:slice, year):
-
-    """
-
-    :param path: path to spatial file
-    :return: geodataframe
-    """
-    name = file_name(path)
-    msg=f'reading from {chunk.start} to {chunk.stop} rows from {name} for year {year}'
-    logger.info(msg)
-    return gpd.read_file(path, rows=chunk)
-
-
 def transform_gdf(gdf: gpd.GeoDataFrame):
-
-    msg="transforming dataframe"
-    logger.info(msg)
-    transformed = gdf.copy(deep=False)
-    transformed = transformed.to_crs(epsg = 4326)
+    """
+    takes a raw geodataframe:
+    1. sets coordinate system to ESPG: WGS 84 (?)
+    2. fills blank geometry cells with empty polygons
+    3. uses janitor package to make all column names snake case
+    """
+    transformed = gdf.to_crs(epsg = 4326) 
     transformed['geometry'] = transformed["geometry"].fillna()
     transformed = transformed.clean_names()
 
     return transformed
 
 
-def read_transform(path: str, chunk: slice, year):
-    chunk_gdf = read_chunk(path, chunk, year)
-    return transform_gdf(chunk_gdf)
+def agg_from_path(file_path, year="1984"):
 
+    """
+    1. from a path to a valid gdf, split it into chunks
+    2. for each slice, transform and then aggregate all slices
+    """
+    terminal_name=file_path.rsplit('/',1)[1]
+    file_chunks = make_chunks(path=file_path)
 
-def agg_from_path(pth, year="1984"):
-    chunks = make_chunks(path=pth)
     g_list=[]
-    for c in chunks:
-        g_list.append(read_transform(pth, c, year=year))
-    logger.info(f'{cpu_use()} aggregating dataframes')
-    
-    df=pd.concat(g_list)
 
+    for c in file_chunks:
+
+        logger.info(f'reading from {c.start} to {c.end} rows from file: {terminal_name} \
+            for year {year}')
+        d=gpd.read_file(file_path, rows=c)
+
+        logger.info('transforming data')
+        d=transform_gdf(d)
+        g_list.append(d) # append to list
+
+    logger.info(f'{cpu_use()} aggregating chunked dataframes')
+    df=pd.concat(g_list) # combines list of geo_dataframes
     return df
-
-
-
-
-
 
 
