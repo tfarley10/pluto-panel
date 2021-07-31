@@ -2,7 +2,7 @@ from io import BytesIO
 from urllib.request import urlopen
 from zipfile import ZipFile
 from tempfile import mkdtemp
-from utils import list_all_files
+from utils import list_file_types
 import os
 import logging
 from logging.config import fileConfig
@@ -65,7 +65,7 @@ def unzip_to_temp(zipurl, extract = True):
                 zfile.extractall(dir)
 
     # does the shapefile contain more zipfiles?
-    child_zips = list_all_files(dir, ['zip'])
+    child_zips = list_file_types(dir, ['zip'])
     len_child=len(child_zips)
     if len_child > 0:
         msg2=f'{zipurl} has {len_child} nested zipfiles, unzipping'
