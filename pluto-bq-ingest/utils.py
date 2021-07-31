@@ -3,6 +3,7 @@ import pandas as pd
 from fiona import open
 from time import time
 import geopandas as gpd
+import psutil
 
 def get_ext(path):
     return path.rsplit('.', 1)[1].lower()
@@ -80,4 +81,7 @@ def read_shapefile(path):
     delta = round((time()-t0)/60,2)
     print(f"Reading {file} took {delta} minutes")
     return(f)
+
+def cpu_use():
+    return f'cpu usage: {psutil.cpu_percent()}%'
 

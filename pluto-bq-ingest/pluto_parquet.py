@@ -4,12 +4,14 @@ from janitor import clean_names
 import fiona
 from functools import partial
 import os
+from utils import cpu_use
 
 import logging
 from logging.config import fileConfig
 
 loginipath='logs/logging_config.ini'
-fileConfig(loginipath, defaults={'logfilename': 'logs/pluto.log'})
+log_file='extract_load.log'
+log_path=os.path.join('logs', log_file)
 logger = logging.getLogger('sLogger')
 
 
@@ -97,8 +99,8 @@ def agg_from_path(pth, year="1984"):
     g_list=[]
     for c in chunks:
         g_list.append(read_transform(pth, c, year=year))
-    msg=f'aggregating dataframes in {year}'
-    logger.info(msg)
+    logger.info(f'{cpu_use()} aggregating dataframes')
+    
     df=pd.concat(g_list)
 
     return df
