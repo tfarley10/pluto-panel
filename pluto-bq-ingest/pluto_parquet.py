@@ -5,7 +5,6 @@ import fiona
 from functools import partial
 import os
 from utils import cpu_use, list_files
-
 import logging
 from logging.config import fileConfig
 
@@ -36,9 +35,9 @@ def filter_valid_pluto(dir:str) -> list:
     takes a directory, returns a list of valid pluto files from that directory
     """
     paths=list_files(dir)
-    filter(is_valid_pluto, paths)
+    filtered_paths=filter(is_valid_pluto, paths)
     
-    return list(paths)
+    return list(filtered_paths)
 
 
 def make_chunks(path:str, size=5 * 10 ** 4) -> list:
@@ -54,7 +53,7 @@ def make_chunks(path:str, size=5 * 10 ** 4) -> list:
     return slices
 
 
-def transform_gdf(gdf: gpd.GeoDataFrame):
+def transform_gdf(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
     """
     takes a raw geodataframe:
     1. sets coordinate system to ESPG: WGS 84 (?)
@@ -63,9 +62,9 @@ def transform_gdf(gdf: gpd.GeoDataFrame):
     """
     transformed = gdf.to_crs(epsg = 4326) 
     transformed['geometry'] = transformed["geometry"].fillna()
-    transformed = transformed.clean_names()
+    transformed_df = transformed.clean_names()
 
-    return transformed
+    return transformed_df
 
 
 def agg_from_path(file_path, year="1984"):
@@ -81,8 +80,7 @@ def agg_from_path(file_path, year="1984"):
 
     for chunk in file_chunks:
 
-        logger.info(f'reading from {chunk.start} to {chunk.stop} rows from file: {terminal_name} \
-            for year {year}')
+        logger.info(f'reading from {chunk.start} to {chunk.stop} rows from file: {terminal_name} for year {year}')
         d=gpd.read_file(file_path, rows=chunk)
 
         logger.info('transforming data')
