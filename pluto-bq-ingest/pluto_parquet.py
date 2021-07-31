@@ -4,7 +4,7 @@ from janitor import clean_names
 import fiona
 from functools import partial
 import os
-from utils import cpu_use
+from utils import cpu_use, list_files
 
 import logging
 from logging.config import fileConfig
@@ -20,29 +20,32 @@ def is_valid_pluto(path: str) -> bool:
     only include 'clipped' shapefiles, and mappluto files
     """
     lower_path=path.lower()
-    return ('unclipped' not in lower_path) and ('mappluto' in lower_path)
+
+    is_shapefile=lower_path.rsplit('.', 1)[1] == 'shp'
+
+    criteria=(is_shapefile) and \
+                ('unclipped' not in lower_path) and \
+                ('mappluto' in lower_path)
+
+    return criteria
 
 
-def list_shp(dir:str) -> list:
-
-    """
-
-    """
-    paths=[]
-    get_ext = lambda x: x.rsplit('.', 1)[1].lower()
-    for root, _, files in os.walk(dir):
-        for file in files:
-            if get_ext(file) == 'shp' and is_valid_pluto(file):
-                paths.append(os.path.join(root, file))
-    return (paths)
-
-
-def make_chunks(path:str, size=5 * 10 ** 4):
+def filter_valid_pluto(dir:str) -> list:
 
     """
-    :param gf_rows: number of rows in spatial data file
-    :param size: # of rows to read in each slice
-    :return: list of slices that will `chunk` the file read
+    takes a directory, returns a list of valid pluto files from that directory
+    """
+    paths=list_files(dir)
+    filter(is_valid_pluto, paths)
+    
+    return list(paths)
+
+
+def make_chunks(path:str, size=5 * 10 ** 4) -> list:
+
+    """
+    makes appropriately sized slices to process a dataframe (50,000 rows)
+    returns: a list of slices
     """
     df_rows = len(fiona.open((path)))
     starts = list(range(0, df_rows, size))
@@ -74,20 +77,20 @@ def agg_from_path(file_path, year="1984"):
     terminal_name=file_path.rsplit('/',1)[1]
     file_chunks = make_chunks(path=file_path)
 
-    g_list=[]
+    gdf_list=[] # initialize list of transformed gdf's
 
-    for c in file_chunks:
+    for chunk in file_chunks:
 
-        logger.info(f'reading from {c.start} to {c.end} rows from file: {terminal_name} \
+        logger.info(f'reading from {chunk.start} to {chunk.stop} rows from file: {terminal_name} \
             for year {year}')
-        d=gpd.read_file(file_path, rows=c)
+        d=gpd.read_file(file_path, rows=chunk)
 
         logger.info('transforming data')
         d=transform_gdf(d)
-        g_list.append(d) # append to list
+        gdf_list.append(d) # append to list
 
     logger.info(f'{cpu_use()} aggregating chunked dataframes')
-    df=pd.concat(g_list) # combines list of geo_dataframes
+    df=pd.concat(gdf_list) # combines list of geo_dataframes
     return df
 
 
