@@ -2,15 +2,10 @@ import pandas as pd
 import geopandas as gpd
 from janitor import clean_names
 import fiona
-from functools import partial
-import os
 from utils import cpu_use, list_files
 import logging
-from logging.config import fileConfig
 
-loginipath='logs/logging_config.ini'
-log_file='extract_load.log'
-log_path=os.path.join('logs', log_file)
+
 logger = logging.getLogger('sLogger')
 
 
