@@ -12,6 +12,12 @@ loginipath='logs/logging_config.ini'
 fileConfig(loginipath, defaults={'logfilename': 'logs/pluto.log'})
 logger = logging.getLogger('sLogger')
 
+
+def clipped(path: str):
+    lower_path=path.lower()
+    return ('unclipped' not in lower_path) and ('mappluto' in lower_path)
+
+
 def list_shp(dir:str):
 
     """
@@ -24,16 +30,10 @@ def list_shp(dir:str):
     get_ext = lambda x: x.rsplit('.', 1)[1].lower()
     for root, dirs, files in os.walk(dir):
         for file in files:
-            if get_ext(file) == 'shp':
+            if get_ext(file) == 'shp' and clipped(file):
                 paths.append(os.path.join(root, file))
     return (paths)
 
-
-
-
-def clipped(path: str):
-    lower_path=path.lower()
-    return ('unclipped' not in lower_path) and ('mappluto' in lower_path)
 
 
 def filter_clipped(path_list: list):
@@ -97,8 +97,11 @@ def agg_from_path(pth, year="1984"):
     g_list=[]
     for c in chunks:
         g_list.append(read_transform(pth, c, year=year))
+    msg=f'aggregating dataframes in {year}'
+    logger.info(msg)
+    df=pd.concat(g_list)
 
-    return pd.concat(g_list)
+    return df
 
 
 
