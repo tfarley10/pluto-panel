@@ -61,7 +61,7 @@ def unzip_to_temp(zipurl, extract = True):
                 return files
             else:
 
-                print("Unzipping file")
+                logger.info(f'Unzipping {zipurl}')
                 zfile.extractall(dir)
 
     # does the shapefile contain more zipfiles?
