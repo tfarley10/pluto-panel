@@ -8,9 +8,14 @@
 
 `docker build --tag [<name-your-image>] .`
 
-3. run container  
+3. bash into container  
 
-`docker run [<image-name>]`
+```
+docker run \
+   --rm -it -v $(pwd):/usr/src/app \
+   --entrypoint \
+   bash python-gcloud
+```
 
 ## Jupyter
 
@@ -18,7 +23,7 @@
 
 1. go to directory
 
-   `cd ../plutoIngest/docker/jupyter`  
+   `cd ../plutoIngest/docker/jupyter` 
 
 2. build image  
 
@@ -36,6 +41,11 @@
 [Aly Sivji's tutorial on youtube is very helpful](https://www.youtube.com/watch?v=oO8n3y23b6M)
 
 
-`docker run -p 9999:8888 -v $(pwd):/app tfarley10/jupyter`
+```
+docker run \
+   -p 9999:8888 \
+   -v $(pwd):/app \
+   tfarley10/jupyter
+   ```
    
     
