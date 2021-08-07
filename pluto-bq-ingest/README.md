@@ -1,5 +1,5 @@
 # TODO
-[] just use a python script to download/unzip zip-files  
+- [ ] just use a python script to download/unzip zip-files  
     - use [zipextract](https://stackoverflow.com/questions/49541026/how-do-i-unzip-a-zip-file-in-google-cloud-storage) function to unzip from storage
 # Ingesting [MapPluto](https://www1.nyc.gov/site/planning/data-maps/open-data/bytes-archive.page?sorts[year]=0) archives into Bigquery
 
