@@ -16,6 +16,7 @@ select
     end as borough_code,
     lpad(cast(block as string), 5, '0') as block,
     lpad(cast(lot as string), 4, '0') as lot,
+    {# pick first column name #}
     {{across(dbtplyr.one_of(max_far_col, source('raw_pluto', tb )), "{{var}}")}} as max_resid_allw_far,
     {{across(dbtplyr.one_of(built_far_col, source('raw_pluto', tb )), "{{var}}")}} as built_far,
     {{across(dbtplyr.starts_with('landuse', source('raw_pluto', tb )), "{{var}}")}} as land_use_category,
