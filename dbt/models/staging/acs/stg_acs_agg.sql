@@ -13,9 +13,7 @@ select
     not_us_citizen_pop,
     masters_degree,
     bachelors_degree,
-    puma_geo.puma_name,
     {{yr}} as year
-from `bigquery-public-data.census_bureau_acs.puma_{{yr}}_1yr` as acs
-inner join {{ref('stg_puma_geos')}} as puma_geo on puma_geo.puma_geo_id = acs.geo_id
+from `bigquery-public-data.census_bureau_acs.puma_{{yr}}_1yr`
 {% if not loop.last -%} union all {%- endif %}
 {% endfor %}
