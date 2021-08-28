@@ -3,6 +3,7 @@
 {% set pluto_tables_query %}
 select distinct
 table_name
+{# use raw_pluto dataset #}
 from `pluto-panel.raw_pluto.INFORMATION_SCHEMA.TABLES`
 order by 1
 {% endset %}
