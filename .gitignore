@@ -14,3 +14,4 @@ raw_metadata
 .virtual_documents
 metadata_text
 .DS_Store
+puma
