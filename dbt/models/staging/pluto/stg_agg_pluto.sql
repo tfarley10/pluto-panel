@@ -33,7 +33,7 @@ select
     yearbuilt as year_built,
     address as lot_address,
     cast(histdist as string) as historic_district,
-    safe.st_geogfromwkb(geometry) as geom
+    safe.st_geogfromwkb(geometry) as lot_geometry
 from {{source('raw_pluto', tb )}}
 {% if not loop.last -%} union all {%- endif %}
 {% endfor %}
