@@ -7,10 +7,14 @@ models:
         tests:
           - unique
           - not_null
-      - name: land_use_category
+      - name: land_use_code
         tests:
           - accepted_values:
               values: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11']
+      - name: owner_type_code
+        tests:
+          - accepted_values:
+              values: ['C', 'M', 'O', 'P', 'X']
               
 
 
