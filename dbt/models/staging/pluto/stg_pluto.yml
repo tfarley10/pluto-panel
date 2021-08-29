@@ -1,12 +1,13 @@
 version: 2
 
 models:
-  - name: stg_transform_pluto
+  - name: lot_year
     columns:
       - name: pluto_year_id
         tests:
           - unique
           - not_null
+# TODO: USE NEW MAPPING FOR TESTS
       - name: land_use_code
         tests:
           - accepted_values:
