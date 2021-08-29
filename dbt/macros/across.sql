@@ -1,3 +1,6 @@
+
+{# this is really from the dtplyr package, i just changed it to include less spaces #}
+
 {% macro across(var_list, script_string, final_comma) %}
 
   {%- for v in var_list -%}
