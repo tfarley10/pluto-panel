@@ -36,3 +36,14 @@ models:
         staging:
             metadata:
                 materialized: view
+
+seeds:
+    land_use:
+      # Override column types
+      +column_types:
+        land_use_code: varchar(2)
+        land_use_category: varchar(32)
+    owner_type:
+      +column_types:
+        owner_type_code: varchar(2)
+        owner_type: varchar(32)
