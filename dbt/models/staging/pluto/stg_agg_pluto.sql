@@ -5,9 +5,8 @@
 
 {% for tb in pluto_tables %}
 select 
-    split('{{tb}}', '_')[safe_offset(1)] as year,
+    cast(split('{{tb}}', '_')[safe_offset(1)] as int64) as year,
     borough,
-
     {# standardizing bbl code across years #}
     case borough 
         when 'MN' then '1'
