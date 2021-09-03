@@ -43,6 +43,6 @@ select * from final
 
 {% if is_incremental() %}
 
-  where true
+  where false
 
 {% endif %}
