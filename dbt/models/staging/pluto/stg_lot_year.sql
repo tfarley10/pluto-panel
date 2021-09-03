@@ -1,6 +1,6 @@
 {{config(
     materialized = "incremental",
-    cluster_by = "lot_geometry",
+    cluster_by = ["lot_geometry", "bbl"],
     partition_by = {
       "field": "year",
       "data_type": "int64",
@@ -15,8 +15,8 @@
 with prep as (
     select 
 
-        md5(year || borough_code || block || lot) as pluto_year_id,
         borough_code || block || lot as bbl,
+        farm_fingerprint(cast(year as string) || borough_code || block || lot) as bbl_year_hash_id,
         *,
         cast(borough_code as int64) as borough_int,
         st_centroid(lot_geometry) as lot_centroid
@@ -52,7 +52,8 @@ final as (
 {# year over year change in maximum allowable floor area ratio #}
 select
     *,
-    lag(bbl) over(partition by bbl order by year) as lag_bbl
+    farm_fingerprint(bbl) as bbl_hash,
+    lag(bbl_year_hash_id) over(partition by bbl order by year) as lag_bbl_year_hash_id
 from map_categories
 inner join {{ref('stg_puma_geos')}} on st_intersects(lot_centroid, puma_geometry)
 
