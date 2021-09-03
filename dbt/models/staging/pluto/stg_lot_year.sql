@@ -1,5 +1,5 @@
 {{config(
-    materialized = "incremental",
+    materialized = "table",
     cluster_by = ["lot_geometry", "bbl"],
     partition_by = {
       "field": "year",
@@ -14,12 +14,13 @@
 
 with prep as (
     select 
-
-        borough_code || block || lot as bbl,
-        farm_fingerprint(cast(year as string) || borough_code || block || lot) as bbl_year_hash_id,
         *,
-        cast(borough_code as int64) as borough_int,
-        st_centroid(lot_geometry) as lot_centroid
+        borough_code || block || lot as bbl,
+        st_centroid(lot_geometry) as lot_centroid,
+
+        farm_fingerprint(borough_code || block || lot) as bbl_hash,
+        farm_fingerprint(cast(year as string) || borough_code || block || lot) as bbl_year_hash_id
+
     from {{ref('stg_agg_pluto')}}
     where
         not st_isempty(lot_geometry)
@@ -37,7 +38,7 @@ land_use_map as (
 owner_type_map as (
     select
         owner_type_code,
-        owner_type
+        owner_type_category
     from {{ref('owner_type')}}
 ),
 
@@ -54,15 +55,16 @@ final as (
 
 {# year over year change in maximum allowable floor area ratio #}
 select
-    *,
-    farm_fingerprint(bbl) as bbl_hash,
+    * replace(coalesce(owner_type_category, 'private') as owner_type_category),
     lag(bbl_year_hash_id) over(partition by bbl order by year) as lag_bbl_year_hash_id
 from map_categories
 inner join {{ref('stg_puma_geos')}} on st_intersects(lot_centroid, puma_geometry)
 
 )
 
-select * from final
+select 
+    * 
+from final
 
 {% if is_incremental() %}
   where false
