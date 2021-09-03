@@ -11,3 +11,7 @@ While snapshots of Land Use (Zoning) regulations data for NYC  are [readily avai
 #### Drilling down with American Community Survey data
 
 - Were neighborhoods with higher car ownership more likely to down-zone than those with lower car ownership? 
+
+## Resources
+
+[NYC Planning Blog](https://nycplanning.github.io/db-pluto/#/Data-Dictionary)
