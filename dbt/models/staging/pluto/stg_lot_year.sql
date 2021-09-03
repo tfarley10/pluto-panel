@@ -28,13 +28,16 @@ with prep as (
 
 land_use_map as (
     select 
-        *
+        land_use_code,
+        land_use_category,
+        has_residential
     from {{ref('land_use')}}
 ),
 
 owner_type_map as (
     select
-        *
+        owner_type_code,
+        owner_type
     from {{ref('owner_type')}}
 ),
 
