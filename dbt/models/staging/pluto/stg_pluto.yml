@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: lot_year
+  - name: stg_lot_year
     columns:
       - name: pluto_year_id
         tests:
