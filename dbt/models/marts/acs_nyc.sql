@@ -1,4 +1,6 @@
-
+{{config(
+    materialized = "incremental")
+    }}
 with acs as (
     select * from {{ref('stg_acs_agg')}}
 ),
@@ -14,3 +16,9 @@ select
     *
 from acs 
 inner join nyc_pumas using (geo_id)
+
+{% if is_incremental() %}
+
+  where false
+
+{% endif %}
