@@ -35,7 +35,7 @@ select
     assessland as assessed_land_value,
     yearbuilt as year_built,
     address as lot_address,
-    cast(histdist as string) as historic_district,
+    nullif(cast(histdist as string), '0') as historic_district,
     safe.st_geogfromwkb(geometry) as lot_geometry
 from {{source('raw_pluto', tb )}}
 {% if not loop.last -%} union all {%- endif %}
