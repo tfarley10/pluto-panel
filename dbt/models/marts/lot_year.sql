@@ -1,5 +1,5 @@
 {{config(
-    materialized = "incremental",
+    materialized = "table",
     cluster_by = ["lot_geometry", "bbl"],
     partition_by = {
       "field": "year",
@@ -35,12 +35,18 @@ missing_lag as (
     )
 ),
 
-final as (
+combine as (
     select * from has_lag
 
     union all 
 
     select * from missing_lag
+),
+
+final as (
+    select
+        * replace(if(historic_district is null, false, true) as historic_district)
+    from combine
 )
 
 select * from final
