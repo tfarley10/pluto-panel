@@ -1,6 +1,24 @@
-# My Project!
+# NYC Zoning Data Project
 
-A lot of duct tape so far! Rome wasn't but in only one day
+## Objectives
+
+1. Aggregate NYC Zoning data from 2002 - present in a reporducible manner
+
+2. Add other sources of data such as census, ACRIS and Real Estate data to widen the scope of the dataset
+
+3. Do data analysis
+
+## Project Structure
+
+- pluto-bq-ingest:
+    - how I'm loading raw data into BigQuery
+- dbt
+    - modelling the data
+- metadata
+    - trying to add structure to the 19+ years of metadata that from PLUTO
+
+    - python scripts that scrape the html and PDF metadata files
+    
 
 
 ## Next Steps
