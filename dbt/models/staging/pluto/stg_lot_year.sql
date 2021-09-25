@@ -15,9 +15,17 @@
 with prep as (
     select 
         *,
+        case 
+            when cast(lot as integer) < 1000 then 'traditional'
+            when cast(lot as integer) between 1001 and 6999 then 'condo_units'
+            when cast(lot as integer) between 7501 and 7599 then 'condo_billing'
+            when cast(lot as integer) between 8000 and 8899 then 'subterranean'
+            when cast(lot as integer) between 8900 and 8999 then 'dtm_dummy'
+            when cast(lot as integer) > 8999 then 'air_rights'
+            else null
+        end as lot_category,
         borough_code || block || lot as bbl,
         st_centroid(lot_geometry) as lot_centroid,
-
         farm_fingerprint(borough_code || block || lot) as bbl_hash,
         farm_fingerprint(cast(year as string) || borough_code || block || lot) as bbl_year_hash_id
 
