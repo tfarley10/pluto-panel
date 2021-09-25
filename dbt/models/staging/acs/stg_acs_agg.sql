@@ -4,7 +4,9 @@
 {% for yr in acs_years %}
 select 
     geo_id,
+    total_pop,
     family_households,
+    median_income,
     housing_units,
     median_rent,
     mortgaged_housing_units,
