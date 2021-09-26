@@ -1,8 +1,3 @@
-{{config(
-    materialized = "table"
-    )
-    }}
-
 with missing_lag as (
 
     select 
@@ -41,8 +36,3 @@ final as (
 
 select * from final
 
-{% if is_incremental() %}
-
-  where false
-
-{% endif %}
