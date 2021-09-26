@@ -1,17 +1,3 @@
-{{config(
-    materialized = "table",
-    cluster_by = ["lot_geometry", "bbl"],
-    partition_by = {
-      "field": "year",
-      "data_type": "int64",
-      "range": {
-        "start": 2002,
-        "end": 2020,
-        "interval": 1
-      }
-    }
-)}}
-
 with prep as (
     select 
         *,
@@ -74,7 +60,3 @@ select
     * 
 from final
 
-{% if is_incremental() %}
-  where false
-
-{% endif %}
