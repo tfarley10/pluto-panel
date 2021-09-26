@@ -1,3 +1,7 @@
+{{config(
+    materialized = "table"
+)}}
+
 select 
     '360' || puma2010 as puma_geo_id,
     pumaname10 as puma_name,
