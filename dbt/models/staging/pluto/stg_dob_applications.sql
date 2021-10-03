@@ -1,6 +1,5 @@
 {{config(
     materialized = "table"
-
 )}}
 with prep as (
     select
@@ -18,7 +17,7 @@ with prep as (
         lpad(lot, 4, '0') as lot,
         existing_dwelling_units,
         proposed_dwelling_units,
-        latest_action_date as latest_action_date,
+        trim(latest_action_date) as latest_action_date,
         existing_occupancy
     from raw_pluto.raw_job_applications
 
@@ -26,6 +25,10 @@ with prep as (
 
 select 
     *,
+    case 
+        when regexp_contains(latest_action_date, '-') then date(latest_action_date)
+        else safe.parse_date('%m/%d/%Y', latest_action_date)
+    end as latest_action_dt,
     borough_num || block || lot as bbl 
 
 from prep
