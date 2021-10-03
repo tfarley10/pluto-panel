@@ -1,3 +1,17 @@
+{{config(
+    materialized = "table",
+    cluster_by = ["lot_geometry", "bbl"],
+    partition_by = {
+      "field": "year",
+      "data_type": "int64",
+      "range": {
+        "start": 2002,
+        "end": 2020,
+        "interval": 1
+      }
+    }
+)}}
+
 with prep as (
     select 
         *,
@@ -47,12 +61,13 @@ map_categories as (
 
 final as (
 
-{# year over year change in maximum allowable floor area ratio #}
+
 select
-    * replace(coalesce(owner_type_category, 'private') as owner_type_category),
-    lag(bbl_year_hash_id) over(partition by bbl order by year) as lag_bbl_year_hash_id
+    map_categories.* replace(coalesce(owner_type_category, 'private') as owner_type_category),
+    st_geohash(lot_centroid, 20) as centroid_geohash,
+    puma_geo_id
 from map_categories
-inner join {{ref('stg_puma_geos')}} on st_intersects(lot_centroid, puma_geometry)
+inner join `pluto-panel`.`dbt_ted`.`stg_puma_geos` on st_intersects(lot_centroid, puma_geometry)
 
 )
 

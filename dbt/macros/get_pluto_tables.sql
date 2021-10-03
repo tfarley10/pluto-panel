@@ -5,6 +5,8 @@ select distinct
 table_name
 {# use raw_pluto dataset #}
 from `pluto-panel.raw_pluto.INFORMATION_SCHEMA.TABLES`
+where 
+    regexp_contains(table_name, 'pluto_\\d{4}')
 order by 1
 {% endset %}
 

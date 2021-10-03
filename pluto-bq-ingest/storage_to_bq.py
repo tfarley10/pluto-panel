@@ -20,7 +20,10 @@ storage_bq_map = dict(zip(uri, table_id))
 def load_from_uri(uri, table_id):
     job_config = bigquery.LoadJobConfig(
         autodetect=True,
-        source_format=bigquery.SourceFormat.PARQUET)
+        source_format=bigquery.SourceFormat.PARQUET,
+        write_disposition='WRITE_APPEND'
+
+        )
 
     try:
         bq_client.get_table(table_id)
