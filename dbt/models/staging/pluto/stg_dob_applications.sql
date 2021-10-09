@@ -13,6 +13,7 @@ with prep as (
         end as borough_num,
         
         job_status as status_code,
+        job_type,
         lpad(block, 5, '0') as block,
         lpad(lot, 4, '0') as lot,
         regexp_replace(existing_dwelling_units, '[^\\d]', '') as existing_dwelling_units,
@@ -27,6 +28,7 @@ final as (
 
 select 
     status,
+    job_type,
     safe_cast(existing_dwelling_units as integer) as existing_dwelling_units,
     safe_cast(proposed_dwelling_units as integer) as proposed_dwelling_units,
         case 
