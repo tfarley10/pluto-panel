@@ -12,7 +12,7 @@ with prep as (
             when 'STATEN ISLAND' then  '5'
         end as borough_num,
         
-        job_status,
+        job_status as status_code,
         lpad(block, 5, '0') as block,
         lpad(lot, 4, '0') as lot,
         regexp_replace(existing_dwelling_units, '[^\\d]', '') as existing_dwelling_units,
@@ -26,7 +26,7 @@ with prep as (
 final as (
 
 select 
-    job_status,
+    status,
     safe_cast(existing_dwelling_units as integer) as existing_dwelling_units,
     safe_cast(proposed_dwelling_units as integer) as proposed_dwelling_units,
         case 
@@ -37,6 +37,7 @@ select
     borough_num || block || lot as bbl
 
 from prep
+left join {{ref('dob_job_status')}} using(status_code)
 )
 
 select 
