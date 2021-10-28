@@ -3,7 +3,7 @@
 )}}
 with prep as (
     select
-
+        job__ as job_id,
         case borough
             when 'MANHATTAN'     then  '1'
             when 'BRONX'         then  '2'
@@ -19,7 +19,8 @@ with prep as (
         regexp_replace(existing_dwelling_units, '[^\\d]', '') as existing_dwelling_units,
         regexp_replace(proposed_dwelling_units, '[^\\d]', '') as proposed_dwelling_units,
         trim(latest_action_date) as latest_action_date,
-        existing_occupancy
+        existing_occupancy,
+        proposed_occupancy
     from raw_pluto.raw_job_applications
 
 ),
@@ -27,6 +28,7 @@ with prep as (
 final as (
 
 select 
+    job_id,
     status,
     job_type,
     safe_cast(existing_dwelling_units as integer) as existing_dwelling_units,
@@ -36,6 +38,7 @@ select
             else safe.parse_date('%m/%d/%Y', latest_action_date)
         end as latest_action_date,
     existing_occupancy,
+    proposed_occupancy,
     borough_num || block || lot as bbl
 
 from prep
@@ -44,5 +47,6 @@ left join {{ref('dob_job_status')}} using(status_code)
 
 select 
     *,
-    row_number() over(partition by bbl order by latest_action_date desc) as recency_rank
+    row_number() over(partition by bbl order by latest_action_date desc) as bbl_recency_rank,
+    row_number() over(partition by job_id order by latest_action_date desc) as job_recency_rank
 from final
