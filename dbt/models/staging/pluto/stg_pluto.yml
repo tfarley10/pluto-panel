@@ -3,7 +3,7 @@ version: 2
 models:
   - name: stg_lot_year
     columns:
-      - name: pluto_year_hash_id
+      - name: bbl_year_hash_id
         tests:
           - unique
           - not_null
