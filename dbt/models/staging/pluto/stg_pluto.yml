@@ -8,11 +8,11 @@ models:
           - unique
           - not_null
 # TODO: USE NEW MAPPING FOR TESTS
-      - name: land_use_code
+      - name: land_use_category
         # tests:
         #   - accepted_values:
         #       values: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11']
-      - name: owner_type_code
+      - name: owner_type_category
         # tests:
         #   - accepted_values:
         #       values: ['C', 'M', 'O', 'P', 'X']
