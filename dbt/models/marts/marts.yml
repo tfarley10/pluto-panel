@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: lot_year
+    columns:
+      - name: bbl_year_hash_id
+      - name: bbl_year_combo
+      - name: max_resid_allw_far
+      - name: built_far
+      - name: year
+      - name: borough
+      - name: has_residential
+
+              
+
+
