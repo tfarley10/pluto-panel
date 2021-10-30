@@ -1,0 +1,18 @@
+class_2014,description,class_1968
+A-1,"Assembly (Theaters, Concert Halls)",F-1a
+A-2,Assembly (Eating and Drinking – Cabaret),F-4
+A-3,Assembly (Other),F-3| F-1b| F-4 
+A-4,Assembly (Indoor Sporting Events with Spectators),F-1b
+A-5,Assembly (Outdoors),F-2
+B,Business,E
+E,Educational,G
+F-1,Factory and Industrial (Moderate Hazard),D-1
+F-2,Factory and Industrial (Low Hazard),D-2
+H-1,High Hazard (Explosive Detonation),A
+H-2,High Hazard (Accelerated Burning),A
+H-3,High Hazard (Readily Supports Combustion),A
+H-4,High Hazard (Health),None
+H-5,High Hazard (Semiconductors),D-1
+I-1,Institutional (Assisted Living),J-2
+I-2,Institutional (Incapacitated),H-2
+I-3,Institutional (Restrained),H-1
