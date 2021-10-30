@@ -1,15 +1,5 @@
 {{config(
-    materialized = "table",
-    cluster_by = ["lot_geometry", "bbl"],
-    partition_by = {
-      "field": "year",
-      "data_type": "int64",
-      "range": {
-        "start": 2002,
-        "end": 2020,
-        "interval": 1
-      }
-    }
+    materialized = "table"
 )}}
 
 with prep as (
@@ -67,7 +57,7 @@ select
     st_geohash(lot_centroid, 20) as centroid_geohash,
     puma_geo_id
 from map_categories
-inner join `pluto-panel`.`dbt_ted`.`stg_puma_geos` on st_intersects(lot_centroid, puma_geometry)
+inner join {{ref('stg_puma_geos')}} on st_intersects(lot_centroid, puma_geometry)
 
 )
 

@@ -55,10 +55,9 @@ final as (
 )
 
 select 
-    year,
     bbl_year_hash_id,
     array_agg(bbl_year_map) as bbl_year_combo
 from final
-group by 1, 2
+group by 1
 
 
