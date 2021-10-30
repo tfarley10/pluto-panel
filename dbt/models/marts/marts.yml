@@ -9,6 +9,10 @@ models:
       - name: built_far
       - name: year
       - name: borough
+        meta:
+          metrics:
+            total_order_count:
+              type: "count_distinct" 
       - name: has_residential
 
               
