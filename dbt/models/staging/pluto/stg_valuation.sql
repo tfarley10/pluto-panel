@@ -1,15 +1,5 @@
 {{config(
-    materialized = "table",
-    cluster_by = ["bbl"],
-    partition_by = {
-      "field": "year",
-      "data_type": "int64",
-      "range": {
-        "start": 2002,
-        "end": 2020,
-        "interval": 1
-      }
-    }
+  tags=["valu"]
 )}}
 
 with prep as (
