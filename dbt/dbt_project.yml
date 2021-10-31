@@ -20,9 +20,10 @@ clean-targets:
 
 models:
     pluto:
-        staging:
-            metadata:
-                materialized: view
+      marts:
+      staging:
+      metadata:
+        materialized: view
 
 seeds:
   pluto:
