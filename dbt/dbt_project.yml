@@ -22,8 +22,6 @@ models:
     pluto:
       marts:
       staging:
-      metadata:
-        materialized: view
 
 seeds:
   pluto:
