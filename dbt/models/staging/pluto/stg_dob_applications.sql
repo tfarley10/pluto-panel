@@ -1,5 +1,6 @@
 {{config(
-    materialized = "table"
+    materialized = "table",
+    tags=["job_app"]
 )}}
 with prep as (
     select
