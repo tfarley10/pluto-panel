@@ -1,3 +1,6 @@
+{{config(
+    tags=["ly"]
+)}}
 
 {% set pluto_tables = get_pluto_tables() %}
 {% set max_far_col = ["residfar", "maxallwfar"] %}

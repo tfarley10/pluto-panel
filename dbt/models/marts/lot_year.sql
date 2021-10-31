@@ -1,5 +1,6 @@
 {{config(
     materialized = "table",
+    tags=["ly"],
     cluster_by = ["lot_geometry", "bbl"],
     partition_by = {
       "field": "year",
