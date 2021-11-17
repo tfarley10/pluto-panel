@@ -6,13 +6,10 @@ models:
       - name: bbl_year_hash_id
       - name: bbl_year_combo
       - name: max_resid_allw_far
+        description: Maximum Floor area ratio for this lot
       - name: built_far
+        description: the total floor area that was built by this lot
       - name: year
-      - name: borough
-        meta:
-          metrics:
-            total_order_count:
-              type: "count_distinct" 
       - name: has_residential
 
               
