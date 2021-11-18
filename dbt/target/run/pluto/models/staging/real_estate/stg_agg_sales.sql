@@ -1,5 +1,9 @@
 
 
+  create or replace view `pluto-panel`.`dbt_ted`.`stg_agg_sales`
+  OPTIONS()
+  as 
+
 
 
 with prep as (
@@ -133,4 +137,5 @@ select
     borough_code || block || lot as bbl,
     extract(year from sale_date) as sale_year,
     *
-from final
+from final;
+
