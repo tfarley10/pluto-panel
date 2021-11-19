@@ -2,6 +2,7 @@ version: 2
 
 sources:
   - name: raw_pluto # raw tables
+    description: too many different columns!
     database: pluto-panel
     tables:
       - name: pluto_2002 
