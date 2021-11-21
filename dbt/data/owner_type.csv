@@ -1,6 +1,0 @@
-owner_type_code,owner_type_category,pretty_owner_type
-C,city,City ownership
-M,mixed,Mixed city & private ownership
-O,other,Other – owned by either a public authority or the state or federal
-P,private,Private ownership
-X,tax_exempt,Tax exempt 

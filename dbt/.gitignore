@@ -1,2 +1,4 @@
 dbt_modules/
 logs/
+target/
+data/
