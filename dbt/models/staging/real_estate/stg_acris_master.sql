@@ -16,10 +16,11 @@ select
     crfn,
     date(split(recorded_datetime, 'T')[offset(0)]) as recorded_date,
     modified_date,
-    percent_trans,
+    round(cast(percent_trans as numeric), 2) as percent_trans,
     good_through_date,
     doc_type_description,
     class_code_description,
+    cast(document_amt as numeric) as amount,
     party1_type,
     party2_type,
     party3_type
