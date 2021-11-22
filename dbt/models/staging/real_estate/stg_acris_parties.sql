@@ -3,7 +3,9 @@
         tags = ["acris"]
     )
 }}
-with a as (
+
+
+with prep as (
         select 
             document_id,
             party_type,
@@ -18,7 +20,7 @@ with a as (
         from {{ source('real_estate', 'raw_acris_parties') }}
 ),
 
-b as (
+agg_parties as (
 
 select 
     document_id,  
@@ -33,13 +35,13 @@ select
     array_agg(distinct address ignore nulls) as address,
     array_agg(distinct country ignore nulls) as country,
     array_agg(distinct state ignore nulls) as state
-from a 
+from prep 
 left join {{ref('stg_acris_master')}} using (document_id)
 group by 1,2,3,4
 
 ),
 
-c as (
+agg_docs as (
     select 
         document_id, 
         doc_type, 
@@ -48,12 +50,12 @@ c as (
               address array<string>, 
               country array<string>, 
               state array<string>> (party_type, names, address, country, state) as parties
-    from b
+    from agg_parties
 )
 
 select 
     document_id, 
     doc_type, 
     array_agg(parties) as parties 
-from c 
+from agg_docs
 group by 1,2

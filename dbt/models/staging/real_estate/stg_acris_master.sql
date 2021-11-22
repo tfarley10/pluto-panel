@@ -4,7 +4,7 @@
     )
 }}
 
-with a as (
+with prep as (
     select 
         * 
     from {{ source('real_estate', 'raw_acris_master') }}
@@ -25,5 +25,5 @@ select
     party2_type,
     party3_type
 
-from a 
+from prep 
 left join {{ref('acris_document_codes')}} using (doc_type)

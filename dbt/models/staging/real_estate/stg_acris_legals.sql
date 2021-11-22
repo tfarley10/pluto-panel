@@ -4,7 +4,7 @@
     )
 }}
 
-with a as (
+with prep as (
     select 
         document_id,
         borough as borough_code,
@@ -22,9 +22,9 @@ with a as (
 )
 
 select 
-    a.*,
+    prep.*,
     property_type,
     borough_code || block || lot as bbl,
     farm_fingerprint(borough_code || block || lot) as bbl_hash
-from a 
+from prep 
 left join {{ref('property_codes')}} using (property_type_code)

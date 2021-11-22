@@ -4,7 +4,7 @@
     )
 }}
 
-with a as (
+with prep as (
     select 
         master.* except(party1_type, party2_type, party3_type),
         legals.property_type,
@@ -13,5 +13,5 @@ with a as (
     left join {{ref('stg_acris_legals')}} as legals using (document_id)
 )
 
-select * from a
+select * from prep
 
