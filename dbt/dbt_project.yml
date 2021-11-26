@@ -17,6 +17,13 @@ clean-targets:
     - "target"
     - "dbt_modules"
 
-
 seeds:
+  pluto:
     +schema: seed_data
+    +enabled: true
+    land_use:
+        # land use code as string
+      +column_types:
+        land_use_code: string
+        land_use_category: string
+
