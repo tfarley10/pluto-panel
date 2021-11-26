@@ -6,7 +6,9 @@
 
 with prep as (
     select 
-        * 
+        * ,
+        if(reel_yr = '0', true, false) as is_pre_acris,
+        row_number() over(partition by document_id order by good_through_date desc) as recency_rank
     from {{ source('real_estate', 'raw_acris_master') }}
 )
 
@@ -23,7 +25,10 @@ select
     cast(document_amt as numeric) as amount,
     party1_type,
     party2_type,
-    party3_type
+    party3_type,
+    is_pre_acris
 
 from prep 
 left join {{ref('acris_document_codes')}} using (doc_type)
+where 
+    recency_rank = 1
