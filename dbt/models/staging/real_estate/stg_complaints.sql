@@ -6,8 +6,11 @@ with a as (
         safe.parse_date('%m/%d/%Y', date_entered) as complaint_date,
         date_entered as date_entered_raw,
         disposition_code,
-        complaint_category
+        trim(complaint_category) as code
     from real_estate.raw_dob_complaints
 )
 
-select * from a 
+select 
+    * 
+from a 
+left join {{ref('complaint_codes')}} using (code)
