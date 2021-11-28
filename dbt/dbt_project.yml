@@ -11,6 +11,7 @@ test-paths: ["tests"]
 data-paths: ["data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+asset-paths: ["assets"]
 
 target-path: "target"  
 clean-targets:         

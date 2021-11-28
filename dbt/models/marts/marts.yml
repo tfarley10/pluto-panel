@@ -6,12 +6,16 @@ models:
     
     columns:
       - name: bbl_year_hash_id
+        description: Uniquely identifies a lot of land for a given year. Combo of borough-block-lot (bbl) and year. Hashed with farm fingerprint
       - name: bbl_year_combo
+        description: key-value pairs for the given lot of year->bbl_year_hash_id used with cross-join then self join to make arbitrary YOY comparisons.
       - name: max_resid_allw_far
-        description: Maximum Floor area ratio for this lot
+        description: Maximum Floor area ratio for this lot. This field is useful for determining the Zoning restrictiveness of a given tax lot. 
       - name: built_far
         description: the total floor area that was built by this lot
       - name: year
+      - name: bbl
+        description: borough-block-lot id. How the department of buildings uniquely identifies a tax lot in a given year. There are ~850,000 unique lot's each year
       - name: has_residential
 
               
