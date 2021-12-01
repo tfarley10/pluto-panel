@@ -17,7 +17,54 @@ models:
       - name: bbl
         description: borough-block-lot id. How the department of buildings uniquely identifies a tax lot in a given year. There are ~850,000 unique lot's each year
       - name: has_residential
-
+  - name: acs_nyc
+    columns:
+      - name: geo_id
+        description: id of PUMA
+      - name: total_pop
+        description: >
+          Total Population. The total number of all people living in a given geographic area. This is a very useful catch-all denominator when calculating rates.
+      - name: pop_25_64
+        description: >
+          Population age 25 to 64. The number of people in each geography who are between the ages of 25 and 64.
+      - name: family_households
+        description: >
+          A family consists of a householder and one or more other people living in the same household who are related to the householder by birth, marriage, or adoption. 
+      - name: households
+        description: >
+          A count of the number of households in each geography. A household consists of one or more people who live in the same dwelling and also share at meals or living accommodation, and may consist of a single family or some other grouping of people.
+      - name: median_income
+        description: >
+          Median Household Income in the past 12 Months. Within a geographic area, the median income received by every household on a regular basis before payments for personal income taxes, social security, union dues, medicare deductions, etc.
+      - name: housing_units
+        description: >
+          A count of housing units in each geography. A housing unit is a house, an apartment, a mobile home or trailer, a group of rooms, or a single room occupied as separate living quarters, or if vacant, intended for occupancy as separate living quarters.
+      - name: median_rent
+        description: >
+          The median contract rent within a geographic area. The contract rent is the monthly rent agreed to or contracted for, regardless of any furnishings, utilities, fees, meals, or services that may be included. For vacant units, it is the monthly rent asked for the rental unit at the time of interview.
+      - name: mortgaged_housing_units
+        description: >
+          The count of housing units within a geographic area that are mortagaged. "Mortgage" refers to all forms of debt where the property is pledged as security for repayment of the debt, including deeds of trust, trust deed, contracts to purchase, land contracts, junior mortgages, and home equity loans.
+      - name: gini_index
+        description: >
+          The Gini index, or index of income concentration, is a statistical measure of income inequality ranging from 0 to 1. A measure of 1 indicates perfect inequality, i.e., one household having all the income and rest having none. A measure of 0 indicates perfect equality, i.e., all households having an equal share of income.
+      - name: no_cars
+        description: >
+          The number of households without passenger cars, vans, and pickup or panel trucks of one-ton capacity or less kept at home and available for the use of household members.
+      - name: not_us_citizen_pop
+        description: >
+          Not a U.S. Citizen Population. The number of people within each geography who indicated that they are not U.S. citizens.
+      - name: masters_degree
+        description: >
+          The number of people in a geographic area over the age of 25 who obtained a master's degree, but did not complete a more advanced degree.
+      - name: bachelors_degree
+        description: >
+          The number of people in a geographic area over the age of 25 who obtained a bachelor's degree, and did not complete a more advanced degree.
+      - name: year
+        description: Year or ACS
+      - name: puma_name
+        description: name of puma
+      
               
 
 
