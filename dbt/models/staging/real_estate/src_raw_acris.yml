@@ -100,6 +100,9 @@ sources:
             description: gtd
           - name: address_2
             description: Street address of party
+      - name: land_value_raw
+        description: >
+          estimates from https://www.fhfa.gov/PolicyProgramsResearch/Research/Pages/wp1901.aspx
         
 
 
