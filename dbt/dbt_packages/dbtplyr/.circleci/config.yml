@@ -1,0 +1,68 @@
+
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.3-stretch
+      - image: circleci/postgres:9.6.5-alpine-ram
+
+    steps:
+      - checkout
+
+      - run:
+          run: setup_creds
+          command: |
+            echo $BIGQUERY_SERVICE_ACCOUNT_JSON > ${HOME}/bigquery-service-key.json
+
+      - restore_cache:
+          key: deps1-{{ .Branch }}
+
+      - run:
+          name: "Setup dbt"
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+
+            pip install --upgrade pip setuptools
+            pip install dbt==0.19.0
+
+            mkdir -p ~/.dbt
+            cp integration_tests/ci/profiles.yml ~/.dbt/profiles.yml
+    
+      - run:
+          name: "Run Tests - BigQuery"
+          environment:
+              BIGQUERY_SERVICE_KEY_PATH: "/home/circleci/bigquery-service-key.json"
+
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt --warn-error deps --target bigquery
+            dbt --warn-error seed --target bigquery --full-refresh
+            dbt --warn-error compile --target bigquery
+            dbt --warn-error run --target bigquery
+            dbt --warn-error test --target bigquery
+            
+      - run:
+          name: "Run Tests - Postgres"
+          environment:
+            POSTGRES_TEST_HOST: localhost
+            POSTGRES_TEST_USER: root
+            POSTGRES_TEST_PASS: ''
+            POSTGRES_TEST_PORT: 5432
+            POSTGRES_TEST_DBNAME: circle_test
+          command: |
+            . venv/bin/activate
+            cd integration_tests
+            dbt --warn-error deps --target postgres
+            dbt --warn-error seed --target postgres --full-refresh
+            dbt --warn-error compile --target postgres
+            dbt --warn-error run --target postgres
+            dbt --warn-error test --target postgres
+            
+      - save_cache:
+          key: deps1-{{ .Branch }}
+          paths:
+            - "venv"

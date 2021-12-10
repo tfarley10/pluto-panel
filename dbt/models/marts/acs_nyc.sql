@@ -1,8 +1,10 @@
 {{config(
-    materialized = "incremental")
+    materialized = "table",
+    tags=["acs"]
+    )
     }}
 with acs as (
-    select * from {{ref('stg_acs_agg')}}
+    select * replace(cast(year as integer) as year) from {{ref('stg_acs_agg')}}
 ),
 
 nyc_pumas as (
@@ -16,9 +18,3 @@ select
     *
 from acs 
 inner join nyc_pumas using (geo_id)
-
-{% if is_incremental() %}
-
-  where false
-
-{% endif %}

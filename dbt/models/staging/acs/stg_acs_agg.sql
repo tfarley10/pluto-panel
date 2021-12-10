@@ -1,7 +1,11 @@
-{% set acs_years = ['2007','2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'] %}
+{{config(
+    materialized = "table",
+    tags=["acs"]
+    )
+    }}
+{% set acs_tables = get_acs_tables() %}
 
-
-{% for yr in acs_years %}
+{% for table in acs_tables %}
 select 
     geo_id,
     total_pop,
@@ -18,7 +22,12 @@ select
     not_us_citizen_pop,
     masters_degree,
     bachelors_degree,
-    {{yr}} as year
-from `bigquery-public-data.census_bureau_acs.puma_{{yr}}_1yr`
+    white_pop,
+    black_pop,
+    asian_pop,
+    hispanic_pop,
+    regexp_extract('{{table}}', r'.+(\d{4}).+$') as year,
+    regexp_extract('{{table}}', r'.+(\d{1})yr$') as estimate_length,
+from `bigquery-public-data.census_bureau_acs.{{table}}`
 {% if not loop.last -%} union all {%- endif %}
 {% endfor %}

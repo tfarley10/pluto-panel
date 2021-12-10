@@ -4,15 +4,15 @@ sources:
   - name: census_bureau_acs
     database: bigquery-public-data
     tables:
-      - name: puma_2007_1yr 
-      - name: puma_2008_1yr
-      - name: puma_2009_1yr
-      - name: puma_2010_1yr
-      - name: puma_2011_1yr
-      - name: puma_2012_1yr
-      - name: puma_2013_1yr
-      - name: puma_2014_1yr
-      - name: puma_2015_1yr
-      - name: puma_2016_1yr
-      - name: puma_2017_1yr
-      - name: puma_2018_1yr
+      - name: puma_2007_3yr 
+      - name: puma_2008_3yr
+      - name: puma_2009_3yr
+      - name: puma_2010_3yr
+      - name: puma_2011_3yr
+      - name: puma_2012_3yr
+      - name: puma_2013_3yr
+      - name: puma_2014_5yr
+      - name: puma_2015_5yr
+      - name: puma_2016_5yr
+      - name: puma_2017_5yr
+      - name: puma_2018_5yr
