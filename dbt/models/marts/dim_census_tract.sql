@@ -26,5 +26,7 @@ select
             'Richmond'
         ) then true 
         else false 
-        end as is_nyc
+        end as is_nyc,
+        st_centroid(geog) as tract_centroid
 from final
+inner join {{ref('stg_puma_geos')}} on st_intersects(st_centroid(geog), puma_geometry)
